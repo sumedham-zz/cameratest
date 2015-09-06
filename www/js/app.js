@@ -34,18 +34,6 @@ exampleApp.controller('CamCtrl', function($scope, $cordovaCamera, FoodData) {
         }
  
         $cordovaCamera.getPicture(options).then(function(imageData) {
-            $.ajax({ 
-              method: "POST",
-              url: "pick-nic.co/uploadimage", 
-              data: {image: imageData} 
-          })
-            .done(function(data){
-              $scope.calCount += data.calories;
-              FoodData.calCount = $scope.calCount;
-              //document.getElementById("totalCalories") = $scope.x
-              $ionicTabsDelegate.select(2);
-            });
-            
             $scope.imgURI = "data:image/jpeg;base64," + imageData;
         }, function(err) {
             // An error occured. Show a message to the user
